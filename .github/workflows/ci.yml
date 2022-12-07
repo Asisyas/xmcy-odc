@@ -6,7 +6,7 @@ on:
 
 jobs:
     build:
-        name: Docker build
+        name: Build XMCY-ODC PHP Exercise
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -14,7 +14,7 @@ jobs:
             - name: Pull images
               run: make build
             - name: Start services
-              run: make up
+              run: make start
             - name: Wait for services
               run: |
                   while status="$(docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" "$(docker compose ps -q php)")"; do
