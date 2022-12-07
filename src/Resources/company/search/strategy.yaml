@@ -1,0 +1,18 @@
+services:
+    _defaults:
+        public: false
+        
+    app.company.search.strategy.symbol_equals:
+        class: 'App\Business\Company\Search\Default\Strategy\SymbolEquals'
+        tags:
+            - { name: 'app.company.search' }
+    app.company.search.strategy.symbol_wildcard:
+        class: 'App\Business\Company\Search\Default\Strategy\SymbolWildcard'
+        tags:
+            - { name: 'app.company.search' }
+    
+    app.company.search.strategy.name_wildcard:
+        class: 'App\Business\Company\Search\Default\Strategy\NameWildcard'
+        tags:
+            - { name: 'app.company.search' }
+

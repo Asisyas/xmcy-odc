@@ -1,0 +1,9 @@
+imports:
+    - { resource: './strategy.yaml' }
+
+services:
+    App\Business\Company\Search\SearchEngineInterface:
+        class: App\Business\Company\Search\Default\SimpleDefaultSearchEngine
+        arguments:
+            - '@App\Business\Company\Receiver\CompanyReceiverInterface'
+            - !tagged_iterator { tag: 'app.company.search' }

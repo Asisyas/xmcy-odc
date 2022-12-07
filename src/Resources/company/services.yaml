@@ -1,0 +1,14 @@
+imports:
+    - { resource: './search/services.yaml' }
+
+
+services:
+    
+    _defaults:
+        autowire: true
+    
+    App\Business\Company\Client\CompanyClientInterface:
+        class: App\Business\Company\Client\CompanyClient
+       
+    App\Business\Company\Receiver\CompanyReceiverInterface:
+        class: 'App\Business\Company\Receiver\CompanyRemoteReceiver'
