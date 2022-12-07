@@ -28,7 +28,7 @@ services:
     image: node:lts
     working_dir: /app
     volumes:
-      - node:/public
+      - node:/app
       
   caddy:
     build:

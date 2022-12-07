@@ -18,13 +18,10 @@ help:
 build: ## Pull and make docker images and compile application components
 	@$(DOCKER_COMP) build --pull --no-cache
 
-build: vendor
-build: build-front
-
 up: ## Run made application
 	@$(DOCKER_COMP) up --detach
 
-start: build up ## Make and run application
+start: up ## Alias for `make up`
 
 build-front: ## Make front
 	@$(YARN) install
