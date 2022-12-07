@@ -1,0 +1,37 @@
+<div class="card mx-auto">
+    <div class="card-header">
+        Generate company historical quotes
+    </div>
+    {{ form_start(form, {'method': 'POST'}) }}
+    <div class="card-body">
+        <div class="row">
+            <div class="mb-12">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div class="mb-12">
+                {{ form_label(form.symbol) }}
+                {{ form_widget(form.symbol) }}
+                {{ form_errors(form.symbol) }}
+            </div>
+            <div class="row">
+                <div class="col mb-12">
+                    {{ form_label(form.dateFrom) }}
+                    {{ form_widget(form.dateFrom) }}
+                    {{ form_errors(form.dateFrom) }}
+                </div>
+                <div class="col mb-12">
+                    {{ form_label(form.dateTo) }}
+                    {{ form_widget(form.dateTo) }}
+                    {{ form_errors(form.dateTo) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        {{ form_widget(form.submit) }}
+        {{ form_widget(form.reset) }}
+    </div>
+    {{ form_end(form) }}
+</div>
