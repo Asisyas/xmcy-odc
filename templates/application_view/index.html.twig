@@ -3,5 +3,12 @@
 {% block title %}Hello ApplicationViewController!{% endblock %}
 
 {% block body %}
-    {% include 'application_view/form/_history_request.html.twig' with { form: form} %}
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'application_view/form/_history_request.html.twig' with { form: form} %}
+        </div>
+        <div class="col-md-9">
+            {% include 'application_view/report/_report.html.twig' with { history: history_collection, query: history_query, chart: chart } %}
+        </div>
+    </div>
 {% endblock %}

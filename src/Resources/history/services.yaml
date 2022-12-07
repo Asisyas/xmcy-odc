@@ -1,0 +1,8 @@
+services:
+    App\Business\History\Client\HistoryClientInterface:
+        class: App\Business\History\Client\HistoryClient
+        autowire: true
+    
+    App\Facade\History\HistoryFacadeInterface:
+        class: App\Facade\History\HistoryFacade
+        autowire: true

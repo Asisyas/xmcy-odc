@@ -11,15 +11,16 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace App\Business\History\Cache;
+namespace App\Business\History\Client;
 
-use App\Business\Cache\Propagator\CachePropagatorInterface;
 use App\Business\History\Receiver\HistoryReceiverInterface;
+use App\Model\Form\HistoricalQuotesQueryInterface;
+use App\Model\History\HistoryInterface;
 
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>
  */
-class HistoryCachePropagator implements CachePropagatorInterface
+class HistoryClient implements HistoryClientInterface
 {
     /**
      * @param HistoryReceiverInterface $historyReceiver
@@ -28,11 +29,15 @@ class HistoryCachePropagator implements CachePropagatorInterface
         private readonly HistoryReceiverInterface $historyReceiver
     )
     {
-
     }
 
-    public function propagate(): void
+    /**
+     * {@inheritDoc}
+     */
+    public function receiveHistory(HistoricalQuotesQueryInterface $historicalQuotesQuery): HistoryInterface
     {
-        //TODO:
+        return $this->historyReceiver->receiveHistory(
+            $historicalQuotesQuery->getSymbol(),
+        );
     }
 }
