@@ -9,6 +9,12 @@
                     "tom-select/dist/css/tom-select.bootstrap5.css": false
                 }
             }
+        },
+        "@symfony/ux-chartjs": {
+            "chart": {
+                "enabled": true,
+                "fetch": "eager"
+            }
         }
     },
     "entrypoints": []

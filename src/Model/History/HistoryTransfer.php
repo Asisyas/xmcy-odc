@@ -27,7 +27,7 @@ class HistoryTransfer implements HistoryInterface
     private iterable $eventsData;
 
     #[JMS\Type('iterable<App\Model\History\PriceTransfer>')]
-    private readonly iterable $prices;
+    private iterable $prices;
 
     #[JMS\Type('bool')]
     private bool $isPending;
@@ -73,5 +73,15 @@ class HistoryTransfer implements HistoryInterface
     public function getEventsData(): iterable
     {
         return $this->eventsData;
+    }
+
+    /**
+     * @param array $prices
+     *
+     * @return void
+     */
+    public function setPrices(array $prices): void
+    {
+       $this->prices = $prices;
     }
 }

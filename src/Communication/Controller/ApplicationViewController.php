@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace App\Communication\Controller;
 
+use App\Business\Report\Type\ReportTypeStrategyInterface;
+use App\Facade\Reports\ReportsGeneratorFacadeInterface;
 use App\Form\CompanyHistoricalQuotesType;
 use App\Model\Form\CompanyHistoricalQuotesFormTransfer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,22 +24,41 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApplicationViewController extends AbstractController
 {
+    /**
+     * @param ReportsGeneratorFacadeInterface $reportsGeneratorFacade
+     */
+    public function __construct(
+        private readonly ReportsGeneratorFacadeInterface $reportsGeneratorFacade
+    )
+    {
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     #[Route('/', name: 'index', methods: ['POST', 'GET'])]
     public function index(Request $request): Response
     {
-        $source = new CompanyHistoricalQuotesFormTransfer();
-        $form = $this->createForm(CompanyHistoricalQuotesType::class, $source);
+        $historicalQuotesQuery = new CompanyHistoricalQuotesFormTransfer();
+        $form = $this->createForm(CompanyHistoricalQuotesType::class, $historicalQuotesQuery);
+        $reports = null;
+        $error = null;
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $source = $form->getData();
+            try {
+                $reports = $this->reportsGeneratorFacade->generateReports($historicalQuotesQuery);
+            } catch (\Throwable $throwable) {
+                $error = $throwable;
+            }
         }
 
         return $this->render('application_view/index.html.twig', [
             'form' => $form,
+            'reports'   => $reports,
+            'error' => $error,
         ]);
     }
 }

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace App\Business\History\Receiver;
 
+use App\Exception\History\HistoryBadResponseException;
+use App\Exception\History\HistoryNotFoundException;
 use App\Model\History\HistoryInterface;
 use App\Model\History\HistoryTransfer;
 use JMS\Serializer\SerializerInterface;
@@ -32,8 +34,8 @@ class HistoryRemoteReceiver implements HistoryReceiverInterface
         private readonly SerializerInterface $serializer
     )
     {
-
     }
+
     /**
      * {@inheritDoc}
      */
@@ -44,16 +46,32 @@ class HistoryRemoteReceiver implements HistoryReceiverInterface
             $query['region'] = mb_strtolower($region);
         }
 
-        $response = $this->rapidHistoryClient->request(
-            'GET',
-            '/stock/v3/get-historical-data',
-            ['query' => $query]
-        );
+        try {
+            $response = $this->rapidHistoryClient->request(
+                'GET',
+                '/stock/v3/get-historical-data',
+                ['query' => $query]
+            );
+        } catch (\Throwable $throwable) {
+            throw new HistoryBadResponseException(
+                $throwable->getMessage(), $throwable->getCode(), $throwable
+            );
+        }
 
-        return $this->serializer->deserialize(
-            $response->getContent(),
-            HistoryTransfer::class,
-            'json'
-        );
+        try {
+            $history = $this->serializer->deserialize(
+                $response->getContent(),
+                HistoryTransfer::class,
+                'json'
+            );
+        } catch (\Throwable $throwable) {
+            throw new HistoryNotFoundException($symbol, $throwable);
+        }
+
+        if($history === null) {
+            throw new HistoryNotFoundException($symbol);
+        }
+
+        return $history;
     }
 }

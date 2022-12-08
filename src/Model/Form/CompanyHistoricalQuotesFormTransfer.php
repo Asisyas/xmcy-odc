@@ -19,13 +19,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @author Stanislau Komar <head.trackingsoft@gmail.com>
  */
-class CompanyHistoricalQuotesFormTransfer
+class CompanyHistoricalQuotesFormTransfer implements HistoricalQuotesQueryInterface
 {
-    #[Assert\LessThanOrEqual('today  UTC')]
+    #[Assert\LessThanOrEqual('today')]
     #[Assert\NotNull()]
     private \DateTime|null $dateFrom;
 
-    #[Assert\LessThanOrEqual('today UTC')]
+    #[Assert\LessThanOrEqual('today')]
     #[Assert\NotNull()]
     private \DateTime|null $dateTo;
 
@@ -37,15 +37,21 @@ class CompanyHistoricalQuotesFormTransfer
 
     public function __construct()
     {
-        $this->dateFrom = new \DateTime('today UTC');
-        $this->dateTo = new \DateTime('today UTC');
+        $this->dateFrom = new \DateTime('today');
+        $this->dateTo = new \DateTime('today');
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getDateFrom(): \DateTime
     {
         return $this->dateFrom;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setDateFrom(\DateTime $dateFrom = null): static
     {
         $this->dateFrom = $dateFrom;
@@ -53,11 +59,17 @@ class CompanyHistoricalQuotesFormTransfer
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getDateTo(): \DateTime
     {
         return $this->dateTo;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setDateTo(\DateTime $dateTo = null): static
     {
         $this->dateTo = $dateTo;
@@ -65,11 +77,17 @@ class CompanyHistoricalQuotesFormTransfer
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getSymbol(): string
     {
         return $this->symbol;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setSymbol(string $symbol): static
     {
         $this->symbol = $symbol;
@@ -77,11 +95,17 @@ class CompanyHistoricalQuotesFormTransfer
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setEmail(string $email): static
     {
         $this->email = $email;

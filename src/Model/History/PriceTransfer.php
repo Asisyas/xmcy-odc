@@ -23,17 +23,17 @@ class PriceTransfer implements PriceInterface
     #[JMS\Type("DateTime<'U'>")]
     private \DateTime $date;
 
-    private int $open;
+    private int $open = 0;
 
-    private int $close;
+    private int $close = 0;
 
-    private int $high;
+    private int $high = 0;
 
-    private int $low;
+    private int $low = 0;
 
-    private int $volume;
+    private int $volume = 0;
 
-    private int $adjClose;
+    private int $adjClose = 0;
 
     /**
      * {@inheritDoc}

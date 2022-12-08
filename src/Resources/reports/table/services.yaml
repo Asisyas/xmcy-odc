@@ -1,0 +1,17 @@
+services:
+    app.reports.table:
+        class: App\Business\Report\Type\Table\TableStrategy
+        arguments:
+            - '@App\Facade\History\HistoryFacadeInterface'
+            - !tagged_iterator { tag: 'app.reports.table_strategy' }
+        tags:
+            - { name: 'app.reports', type: 'table' }
+    
+    app.reports.table.expander_headers:
+        class: App\Business\Report\Type\Table\Expander\TableHeadersExpander
+        tags: ['app.reports.table_strategy']
+        
+    app.reports.table.expander_data:
+        class: App\Business\Report\Type\Table\Expander\TableValuesExpander
+        tags: ['app.reports.table_strategy']
+    

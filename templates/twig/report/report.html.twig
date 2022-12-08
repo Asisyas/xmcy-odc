@@ -1,0 +1,20 @@
+{% if reports is not empty %}
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        {% for title, report in reports %}
+        <li class="nav-item" role="presentation">
+            <button class="nav-link {{ loop.index == 1 ? 'active': '' }}" id="home-tab" data-bs-toggle="tab" data-bs-target="#report-{{ title|lower }}" type="button" role="tab" aria-controls="home" aria-selected="true">
+                {{ title|upper }}
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        {% for title, report in reports %}
+            <div class="tab-pane fade show {{ loop.index == 1 ? 'active': '' }}" id="report-{{ title|lower }}" role="tabpanel" aria-labelledby="home-tab">
+                {% include 'twig/report/' ~ title|lower ~ '/view.html.twig' with { report: reports[title|lower] } %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    Data not found :(
+{% endif %}

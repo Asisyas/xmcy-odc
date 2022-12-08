@@ -1,4 +1,6 @@
 imports:
     - { resource: 'company/services.yaml' }
+    - { resource: 'history/services.yaml' }
+    - { resource: 'reports/services.yaml' }
     
     

@@ -3,5 +3,32 @@
 {% block title %}Hello ApplicationViewController!{% endblock %}
 
 {% block body %}
-    {% include 'application_view/form/_history_request.html.twig' with { form: form} %}
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'application_view/form/_history_request.html.twig' with { form: form} %}
+        </div>
+        <div class="col-md-9">
+            {% if error is not null %}
+                <div class="card">
+                    <div class="card-header">
+                        <h1>
+                            Ooops... &#128517;
+                        </h1>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text">
+                            {{ error.message }}
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="card-text">
+                            If you want to solve this problem, just hire me.
+                        </small>
+                    </div>
+                </div>
+            {% else %}
+                {{ reports_render(reports) }}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
