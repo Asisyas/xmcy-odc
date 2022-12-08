@@ -9,8 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @author Stanislau Komar <head.trackingsoft@gmail.com>
+ */
 class CompanyController extends AbstractController
 {
+    /**
+     * @param CompanyFacadeInterface $companyFacade
+     */
     public function __construct(
         private readonly CompanyFacadeInterface $companyFacade
     )
@@ -20,6 +26,8 @@ class CompanyController extends AbstractController
 
     /**
      * TODO: Temporal solution. Should be implements specific serialization group for CompanyInterface
+     * TODO: Remove all calculations from the controller. It should be calculated in an specific search decorators.
+     *
      * @see https://symfony.com/bundles/ux-autocomplete/current/index.html
      *
      * @param Request $request
