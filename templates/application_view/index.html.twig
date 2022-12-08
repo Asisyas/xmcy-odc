@@ -3,34 +3,43 @@
 {% block title %}Hello ApplicationViewController!{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-3">
-            {% include 'application_view/form/_history_request.html.twig' with { form: form} %}
-        </div>
-        <div class="col-md-9">
-            {% if error is not null %}
-                <div class="card">
-                    <div class="card-header">
-                        <h1>
-                            Ooops... &#128517;
-                        </h1>
+    <div class="py-5">
+        <div class="row">
+            <div class="col-md-3">
+                {% include 'application_view/form/_history_request.html.twig' with { form: form} %}
+            </div>
+            <div class="col-md-9">
+                {% if error is not null %}
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>
+                                Ooops... &#128517;
+                            </h1>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="card-text">
+                                {{ error.message }}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="card-text">
+                                If you want to solve this problem, just hire me.
+                            </small>
+                        </div>
                     </div>
-                    <div class="card-body text-center">
-                        <p class="card-text">
-                            {{ error.message }}
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="card-text">
-                            If you want to solve this problem, just hire me.
-                        </small>
-                    </div>
-                </div>
-            {% else %}
-                {% if reports is not null %}
-                    {{ reports_render(reports) }}
+                {% else %}
+                    {% if reports is not null %}
+                        <div class="card">
+                            <div class="card-header">
+                                Report for "{{ query.symbol }}" by dates from {{ query.dateFrom|date }} to {{ query.dateTo|date }} has been generated.
+                            </div>
+                            <div class="card-body">
+                                {{ reports_render(reports) }}
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}
