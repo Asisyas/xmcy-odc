@@ -30,19 +30,19 @@ class ChartDatasetValuesExpander implements ChartReportExpanderInterface
         $min = PHP_INT_MAX;
         $max = 0;
         foreach ($history->getPrices() as $prices) {
-            $p = $prices->getOpen();
+            $o = $prices->getOpen();
             $h = $prices->getHigh();
             $l = $prices->getLow();
             $c = $prices->getClose();
-            $min = min($min, $p, $h, $l, $c);
-            $max = max($min, $p, $h, $l, $c);
+            $min = min($min, $o, $h, $l, $c);
+            $max = max($min, $o, $h, $l, $c);
 
             $values[] = [
                 'x' => (int)$prices->getDate()->format('U') * 1000,
-                'o' => $prices->getOpen(),
-                'h' => $prices->getHigh(),
-                'l' => $prices->getLow(),
-                'c' => $prices->getClose(),
+                'o' => $o,
+                'h' => $h,
+                'l' => $l,
+                'c' => $c,
             ];
         }
 
