@@ -31,7 +31,7 @@
                     {% if reports is not null %}
                         <div class="card">
                             <div class="card-header">
-                                Report for "{{ query.symbol }}" by dates from {{ query.dateFrom|date }} to {{ query.dateTo|date }} has been generated.
+                                Report for "{{ query.symbol }}" by dates from {{ query.dateFrom|date('d M Y') }} to {{ query.dateTo|date('d M Y') }} has been generated.
                             </div>
                             <div class="card-body">
                                 {{ reports_render(reports) }}
