@@ -58,7 +58,7 @@ class HistoryDateRangeDecorator implements HistoryDateRangeReceiverInterface
         $prices = [];
         foreach ($history->getPrices() as $price) {
             $pd = $price->getDate();
-            if($dateFrom && $pd < $dateFrom->setTime(23, 59)) {
+            if($dateFrom && $pd < $dateFrom->setTime(00, 00, 00)) {
                 continue;
             }
 
