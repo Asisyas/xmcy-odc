@@ -1,0 +1,74 @@
+/*!
+  * Bootstrap v5.2.3 (https://getbootstrap.com/)
+  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+  */
+
+/*!
+ * @kurkle/color v0.2.1
+ * https://github.com/kurkle/color#readme
+ * (c) 2022 Jukka Kurkela
+ * Released under the MIT License
+ */
+
+/*!
+ * Chart.js v3.9.1
+ * https://www.chartjs.org
+ * (c) 2022 Chart.js Contributors
+ * Released under the MIT License
+ */
+
+/*!
+ * Datepicker for Bootstrap v1.9.0 (https://github.com/uxsolutions/bootstrap-datepicker)
+ *
+ * Licensed under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+ */
+
+/*!
+ * Sizzle CSS Selector Engine v2.3.6
+ * https://sizzlejs.com/
+ *
+ * Copyright JS Foundation and other contributors
+ * Released under the MIT license
+ * https://js.foundation/
+ *
+ * Date: 2021-02-16
+ */
+
+/*!
+ * chartjs-plugin-streaming v2.0.0
+ * https://nagix.github.io/chartjs-plugin-streaming
+ * (c) 2017-2021 Akihiko Kusanagi
+ * Released under the MIT license
+ */
+
+/*!
+ * jQuery JavaScript Library v3.6.1
+ * https://jquery.com/
+ *
+ * Includes Sizzle.js
+ * https://sizzlejs.com/
+ *
+ * Copyright OpenJS Foundation and other contributors
+ * Released under the MIT license
+ * https://jquery.org/license
+ *
+ * Date: 2022-08-26T17:52Z
+ */
+
+/*!
+* chartjs-plugin-zoom v2.0.0
+* undefined
+ * (c) 2016-2022 chartjs-plugin-zoom Contributors
+ * Released under the MIT License
+ */
+
+/*! @orchidjs/unicode-variants | https://github.com/orchidjs/unicode-variants | Apache License (v2) */
+
+/*! Hammer.JS - v2.0.7 - 2016-04-22
+ * http://hammerjs.github.io/
+ *
+ * Copyright (c) 2016 Jorik Tangelder;
+ * Licensed under the MIT license */
+
+/*! sifter.js | https://github.com/orchidjs/sifter.js | Apache License (v2) */
