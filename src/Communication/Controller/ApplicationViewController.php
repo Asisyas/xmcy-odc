@@ -58,6 +58,7 @@ class ApplicationViewController extends AbstractController
         return $this->render('application_view/index.html.twig', [
             'form' => $form,
             'reports'   => $reports,
+            'query' => $historicalQuotesQuery,
             'error' => $error,
         ]);
     }
