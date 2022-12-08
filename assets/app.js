@@ -9,18 +9,27 @@
 import './styles/app.scss';
 
 const $ = require('jquery');
+
 // start the Stimulus application
 import './bootstrap';
 
+require('bootstrap');
 require("bootstrap-datepicker");
 
+import { OhlcElement, OhlcController, CandlestickElement, CandlestickController } from 'chartjs-chart-financial'
+
+import Chart from 'chart.js/auto';
+
+import 'chartjs-adapter-luxon';
+
+require('chartjs-plugin-crosshair');
+require('chartjs-plugin-streaming');
+require('chartjs-plugin-zoom');
+
+Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
+
 $(document).ready(() => {
-
-  window.jQuery = $;
-  window.$ = $;
-
   $('.datepicker').datepicker({
     format: 'dd/mm/yyyy'
   });
-
 })

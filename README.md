@@ -25,3 +25,20 @@ A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony
 3. [Debugging with Xdebug](docs/xdebug.md)
 4. [TLS Certificates](docs/tls.md)
 5. [Troubleshooting](docs/troubleshooting.md)
+
+## TODO's:
+
+- [x] Receiver: Historical quotes
+- [x] Receiver: Symbols
+- [x] Reports: Chart
+- [X] Reports: Table
+- [x] Reports: simple abstraction layer
+- [X] Form: validation (email, dates, symbol)
+- [x] Form: autocomplete (wildcard, equals)
+- [x] Simple GitHub CI [Example success build](https://github.com/Asisyas/xmcy-odc/actions/runs/3642711018/jobs/6150122961)
+- [x] Exceptions
+- [x] Docker environment
+- [ ] Close all TODO's
+- [ ] Email sender  
+- [ ] Unit tests
+- [ ] Frontend tests

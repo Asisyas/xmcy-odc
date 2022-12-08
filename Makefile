@@ -30,6 +30,10 @@ build-front: ## Make front
 front-dev: ## Starting the frontend developer mode.
 	@$(YARN) watch
 
+yarn:
+	@$(eval c ?=)
+	@$(YARN) $(c)
+
 down: ## Shutdown all containers
 	@$(DOCKER_COMP) down --remove-orphans
 

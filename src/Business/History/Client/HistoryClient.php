@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace App\Business\History\Client;
 
+use App\Business\History\Receiver\HistoryDateRangeReceiverInterface;
 use App\Business\History\Receiver\HistoryReceiverInterface;
 use App\Model\Form\HistoricalQuotesQueryInterface;
 use App\Model\History\HistoryInterface;
@@ -23,10 +24,10 @@ use App\Model\History\HistoryInterface;
 class HistoryClient implements HistoryClientInterface
 {
     /**
-     * @param HistoryReceiverInterface $historyReceiver
+     * @param HistoryDateRangeReceiverInterface $historyReceiver
      */
     public function __construct(
-        private readonly HistoryReceiverInterface $historyReceiver
+        private readonly HistoryDateRangeReceiverInterface $historyReceiver
     )
     {
     }
@@ -38,6 +39,9 @@ class HistoryClient implements HistoryClientInterface
     {
         return $this->historyReceiver->receiveHistory(
             $historicalQuotesQuery->getSymbol(),
+            null, //TODO:
+            $historicalQuotesQuery->getDateFrom(),
+            $historicalQuotesQuery->getDateTo()
         );
     }
 }

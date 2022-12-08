@@ -17,6 +17,9 @@ framework:
             company_pool:
                 adapter: cache.adapter.filesystem
                 default_lifetime: 3600
+            history_pool:
+                adapter: cache.adapter.filesystem
+                default_lifetime: 3600
             
     #esi: true
     #fragments: true

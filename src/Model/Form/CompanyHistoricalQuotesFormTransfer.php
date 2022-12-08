@@ -21,11 +21,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class CompanyHistoricalQuotesFormTransfer implements HistoricalQuotesQueryInterface
 {
-    #[Assert\LessThanOrEqual('today  UTC')]
+    #[Assert\LessThanOrEqual('today')]
     #[Assert\NotNull()]
     private \DateTime|null $dateFrom;
 
-    #[Assert\LessThanOrEqual('today UTC')]
+    #[Assert\LessThanOrEqual('today')]
     #[Assert\NotNull()]
     private \DateTime|null $dateTo;
 
@@ -37,8 +37,8 @@ class CompanyHistoricalQuotesFormTransfer implements HistoricalQuotesQueryInterf
 
     public function __construct()
     {
-        $this->dateFrom = new \DateTime('today UTC');
-        $this->dateTo = new \DateTime('today UTC');
+        $this->dateFrom = new \DateTime('today');
+        $this->dateTo = new \DateTime('today');
     }
 
     /**

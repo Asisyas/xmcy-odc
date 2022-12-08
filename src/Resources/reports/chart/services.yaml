@@ -1,0 +1,17 @@
+services:
+    app.reports.chart:
+        class: App\Business\Report\Type\Chart\ChartStrategy
+        arguments:
+            - '@App\Facade\History\HistoryFacadeInterface'
+            - !tagged_iterator { tag: 'app.reports.chart_strategy' }
+        tags:
+            - { name: 'app.reports', type: 'chart' }
+    
+    app.reports.chart.expander_meta:
+        class: App\Business\Report\Type\Chart\Expander\ChartDatasetMetaExpander
+        tags: ['app.reports.chart_strategy']
+    
+    app.reports.chart.expander_values:
+        class: App\Business\Report\Type\Chart\Expander\ChartDatasetValuesExpander
+        tags: ['app.reports.chart_strategy']
+    

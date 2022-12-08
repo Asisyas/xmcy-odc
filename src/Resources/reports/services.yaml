@@ -1,0 +1,9 @@
+imports:
+    - { resource: 'table/services.yaml' }
+    - { resource: 'chart/services.yaml' }
+
+services:
+    App\Business\Report\Type\ReportTypeStrategyInterface:
+        class: App\Business\Report\Type\ReportGenerator
+        arguments:
+            - !tagged_iterator { tag: 'app.reports', index_by: 'type' }

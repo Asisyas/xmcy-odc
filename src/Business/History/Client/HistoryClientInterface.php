@@ -10,6 +10,8 @@
 
 namespace App\Business\History\Client;
 
+use App\Exception\History\HistoryBadResponseException;
+use App\Exception\History\HistoryNotFoundException;
 use App\Model\Form\HistoricalQuotesQueryInterface;
 use App\Model\History\HistoryInterface;
 
@@ -21,7 +23,10 @@ interface HistoryClientInterface
     /**
      * @param HistoricalQuotesQueryInterface $historicalQuotesQuery
      *
-     * @return iterable<HistoryInterface>
+     * @return HistoryInterface
+     *
+     * @throws HistoryNotFoundException
+     * @throws HistoryBadResponseException
      */
     public function receiveHistory(HistoricalQuotesQueryInterface $historicalQuotesQuery): HistoryInterface;
 }
